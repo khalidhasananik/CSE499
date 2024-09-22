@@ -39,7 +39,8 @@ def extract_forecast_data(city):
             'WindSpeed': forecast['wind']['speed'],
             'CloudCover': forecast['clouds']['all'],
             'Rainfall': forecast.get('rain', {}).get('3h', 0),  # Rainfall in the last 3 hours, if available
-            'Weather': forecast['weather'][0]['description']
+            'Sunshine': forecast.get('sunshine', 0), # Sunshine may not be directly available
+            'Weather': forecast['weather'][0]['description'],
         }
         data.append(forecast_info)
     return data
